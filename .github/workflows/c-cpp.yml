@@ -13,6 +13,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential devscripts debhelper # Add more as needed
     - name: configure
       run: ./configure
     - name: make
@@ -23,7 +27,6 @@ jobs:
       run: make distcheck
     - name: make dist-zip
       run: make dist-zip
-
     - name: Upload Binary Artifact
       uses: actions/upload-artifact@v4
       with:
