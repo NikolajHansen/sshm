@@ -28,7 +28,7 @@ int Connect::initial(char *serv){
 	} else {
 		std::cerr << "Can't find this server. Please have a look at the server list." << std::endl;
 	}
-	return EXIT_SUCCESS
+	return EXIT_SUCCESS;
 }
 
 int Connect::session(std::string server, char *servalias){
