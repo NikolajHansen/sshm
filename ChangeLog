@@ -1,0 +1,60 @@
+sshm (0.4.3-1) UNRELEASED; urgency=low
+
+  * Add patch from Philippe Berger, with that you can add additional
+    lines to your sshm.conf, which are executed on the remote host
+    on connecting to it.
+  * Fix hardened compilation warning, about unused system() return code.
+    exit sshm with its return code.
+  * Fix FTBFS with GCC 4.7.
+
+sshm (0.4.2-1) unstable; urgency=low
+
+  * Fix compiling with gcc => 4.3.
+  * Update config.{sub,guess} to support new architectures.
+  * Refresh copyright years.
+  * Replace my old email address.
+  * Add manpage.
+  * Remove config.h from source, it is created by configure.
+  * Save some memory by converting useless int methods to boolean.
+
+sshm (0.4.1-1) unstable; urgency=low
+
+  * Replaced the old temporary file method with mkstemp() for security
+    reasons.
+    Closes: #414546
+  * Replaced the rename() function, so the configfile won't be destroyed
+    while copying it between two partitions.
+    Closes: #414548
+  * Replaced domain with hostname and servername with serveralias.
+    Closes: #414550
+  * Fixes with long hostnames and serveraliases, which could cause
+    segmentfaults.
+    Closes: #414551
+  * Corrected some typos in the program.
+    Closes: #414552
+  * Errormessages are now handled by STDERR.
+
+sshm (0.4-1) unstable; urgency=low
+
+  * Corrected some typos in the manpage.
+    Closes: #410938
+  * Fixed two potential endless loops.
+  * Fixed a little bug on leaving a ssh session.
+  * Now you can display only matching servers with
+    sshm --list searchstring.
+  * Some code improvements.
+
+sshm (0.3-1) unstable; urgency=low
+
+  * Fixed output of --list.
+  * Fixed bogus at searching the server, if the one string of the
+    serverdatas were the same as the serveralias.
+  * Removed the "little" in the package description.
+  * Improved errormessages.
+  * Some code improvements.
+  * Uncommenting works now correct.
+  * Added a manpage.
+
+sshm (0.2-1) unstable; urgency=low
+
+  * Initial release.

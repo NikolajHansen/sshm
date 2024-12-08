@@ -1,0 +1,35 @@
+.TH "SSHM" "1"
+.SH NAME
+sshm \- A little command-line tool to manage your ssh servers
+.SH DESCRIPTION
+sshm stand for
+.B ssh manager
+which is a little command-line tool for managing your ssh servers.
+You're able to delete, add, show infos, list all servers and connect to one given server.
+If you add a server, which you can do with 'sshm \-\-add', you have to enter the target ip, port and the username with that you want to connect to the server.
+At last, you have to give this connection an alias. If you enter there for example 'foo' as serveralias, you can connect to this server only by typing: sshm foo
+.SH OPTIONS
+These programs follow the usual GNU command line syntax, with long
+options starting with two dashes (`-').
+A summary of options is included below.
+.TP
+.B \-h, \-\-help
+Show summary of options.
+.TP
+.B \-v, \-\-version
+Show version of program.
+.TP
+.B \-a, \-\-add
+Add a server to the config.
+.TP
+.B \-d, \-\-del [alias]
+Delete a server from the config.
+.TP
+.B \-s, \-\-show [alias]
+Show information about the given server.
+.TP
+.B \-l, \-\-list <search string>
+List all available servers, if a searchstring is given, it will only display matching servers.
+.SH AUTHOR
+This manual page and the program was written by Patrick Matth\[:a]i
+<pmatthaei@debian.org>.
