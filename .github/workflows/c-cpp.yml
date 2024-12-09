@@ -25,13 +25,12 @@ jobs:
       run: make check
     - name: make distcheck
       run: make distcheck
-    - name: make dist-zip
-      run: make dist-zip
-      
+
     - name: Build SSHM Debian Package
       run: |
         dpkg-buildpackage -us -uc -b
-        echo "::set-output name=deb_path::../sshm_*.deb"
+        echo "::set-output name=deb_path::./sshm_*.deb"
+        mv ../sshm_*.deb .
       id: build
 
     - name: Upload SSHM Debian Package
