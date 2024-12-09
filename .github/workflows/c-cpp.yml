@@ -31,11 +31,13 @@ jobs:
     - name: Build Debian package
       run: |
         dpkg-buildpackage -us -uc -b # Assuming you have a proper debian/ directory structure
+        mv ../*.deb .
+        mv ../*.changes .
     
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
         name: deb-package
         path: |
-          ../*.deb
-          ../*.changes
+          *.deb
+          *.changes
