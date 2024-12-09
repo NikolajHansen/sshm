@@ -32,10 +32,23 @@ jobs:
         dpkg-buildpackage -us -uc -b # Assuming you have a proper debian/ directory structure
         mv ../*.deb .
         mv ../*.changes .
-    - name: Upload Artifact
+    - name: Upload Artifact to local build
       uses: actions/upload-artifact@v4
       with:
         name: deb-package
         path: |
           *.deb
           *.changes
+    - name: Upload Debian Package
+      run: |
+        echo "::debug::Setting up environment for Debian package upload"
+        echo "deb-file-path=$(find . -name '*.deb' | head -n 1)" >> $GITHUB_ENV
+        echo "package-name=$(basename "${{ env.deb-file-path }}" .deb)" >> $GITHUB_ENV
+
+        curl -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+        -H "Content-Type: application/vnd.debian.package" \
+        --data-binary "@${{ env.deb-file-path }}" \
+        "https://api.github.com/orgs/hsysdk/packages/debian/sshm/versions"
+
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
