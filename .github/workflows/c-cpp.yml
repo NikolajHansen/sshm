@@ -16,7 +16,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y build-essential devscripts debhelper # Add more as needed
+        sudo apt-get install -y build-essential devscripts debhelper automake # Add more as needed
     - name: configure
       run: ./configure
     - name: make
@@ -27,8 +27,15 @@ jobs:
       run: make distcheck
     - name: make dist-zip
       run: make dist-zip
-    - name: Upload Binary Artifact
+
+    - name: Build Debian package
+      run: |
+        dpkg-buildpackage -us -uc -b # Assuming you have a proper debian/ directory structure
+    
+    - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: Install-Zip
-        path: ./sshm-0.1.zip
+        name: deb-package
+        path: |
+          ../*.deb
+          ../*.changes

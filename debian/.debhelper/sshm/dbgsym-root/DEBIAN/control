@@ -1,0 +1,13 @@
+Package: sshm-dbgsym
+Package-Type: ddeb
+Source: sshm
+Version: 0.4.3-1
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Nikolaj Hansen <contact@hsys.dk>
+Installed-Size: 89
+Depends: sshm (= 0.4.3-1)
+Section: debug
+Priority: optional
+Description: debug symbols for sshm
+Build-Ids: 759fa71b007260b6ffad734f40cd5731580a2207

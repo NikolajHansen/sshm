@@ -5,7 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95b5b192-da8e-44a9-96fc-858371f50606" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.github/.github.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/debian/debian.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sshm-0.4.3.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/c-cpp.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/c-cpp.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile.in" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aclocal.m4" beforeDir="false" afterPath="$PROJECT_DIR$/aclocal.m4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.guess" beforeDir="false" afterPath="$PROJECT_DIR$/config.guess" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.h.in" beforeDir="false" afterPath="$PROJECT_DIR$/config.h.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.sub" beforeDir="false" afterPath="$PROJECT_DIR$/config.sub" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configure" beforeDir="false" afterPath="$PROJECT_DIR$/configure" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/depcomp" beforeDir="false" afterPath="$PROJECT_DIR$/depcomp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/install-sh" beforeDir="false" afterPath="$PROJECT_DIR$/install-sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ltmain.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ltmain.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/missing" beforeDir="false" afterPath="$PROJECT_DIR$/missing" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mkinstalldirs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Makefile.in" beforeDir="false" afterPath="$PROJECT_DIR$/src/Makefile.in" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,10 +43,13 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/nikolaj/workspace/sshm-0.4.3/src/Connect.cpp",
+    "last_opened_file_path": "/home/nikolaj/workspace/sshm-0.4.3/debian",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -58,6 +79,7 @@
       <option name="presentableId" value="Default" />
       <updated>1733623399546</updated>
       <workItem from="1733623400672" duration="2098000" />
+      <workItem from="1733713742796" duration="2077000" />
     </task>
     <servers />
   </component>
