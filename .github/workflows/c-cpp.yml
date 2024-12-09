@@ -27,13 +27,11 @@ jobs:
       run: make distcheck
     - name: make dist-zip
       run: make dist-zip
-
     - name: Build Debian package
       run: |
         dpkg-buildpackage -us -uc -b # Assuming you have a proper debian/ directory structure
         mv ../*.deb .
         mv ../*.changes .
-    
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
