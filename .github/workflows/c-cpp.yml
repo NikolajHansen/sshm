@@ -28,8 +28,9 @@ jobs:
 
     - name: Build SSHM Debian Package
       run: |
+	mkdir ./build
         dpkg-buildpackage -us -uc -b
-        echo "::set-output name=deb_path::../sshm_*.deb"
+        echo "::set-output name=deb_path::./build/sshm_*.deb"
       id: build
 
     - name: Upload SSHM Debian Package
@@ -38,6 +39,6 @@ jobs:
         -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
         -H "Content-Type: application/vnd.debian.package" \
         --data-binary "@${{ steps.build.outputs.deb_path }}" \
-        "https://api.github.com/orgs/NikolajHansen/packages/debian/sshm/versions"
+        "https://maven.pkg.github.com/NikolajHansen/sshm/packages"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
