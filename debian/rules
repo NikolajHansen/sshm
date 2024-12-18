@@ -26,7 +26,7 @@
 #	-DCMAKE_LIBRARY_PATH=$(DEB_HOST_MULTIARCH)
 
 binary: binary-arch binary-indep
-    # Move files to desired directory
-    mv ../*.deb $(DESTDIR)/build
-    mv ../*.changes $(DESTDIR)/build
-    mv ../*.buildinfo $(DESTDIR)/build
+# Move files to desired directory
+	mv ../*.deb $(DESTDIR)/build
+	mv ../*.changes $(DESTDIR)/build
+	mv ../*.buildinfo $(DESTDIR)/build
