@@ -29,7 +29,8 @@ jobs:
       - name: Build SSHM Debian Package
         run: |
           dpkg-buildpackage -us -uc -b
-          mkdir -p ./build
+          sudo mkdir -p ./build
+          sudo chmod 755 ./build
           mv ../*.deb ./build/
           echo "::set-output name=deb_path::./build/sshm_*.deb"
         id: build
