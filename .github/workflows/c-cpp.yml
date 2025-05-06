@@ -30,20 +30,17 @@ jobs:
       - name: make distcheck
         run: make distcheck
 
-      - name: Prepare build directory
-        run: |
-          sudo mkdir -p /build
-          sudo chown runner:runner /build
-
       - name: Build SSHM Debian Package
         id: build
         run: |
           dpkg-buildpackage -us -uc -b
+          ls ../sshm_*.{deb,ddeb} || { echo "No .deb/.ddeb files found"; exit 1; }
           mkdir -p artifacts
-          mv ../sshm_*.deb artifacts/
-          echo "deb_path=artifacts/sshm_*.deb" >> $GITHUB_OUTPUT
+          mv ../sshm_*.{deb,ddeb,buildinfo} artifacts/
+          echo "deb_path=artifacts/sshm_*.{deb,ddeb,buildinfo}" >> $GITHUB_OUTPUT
 
       - name: Upload SSHM Debian Package
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: sshm-debian-packages
