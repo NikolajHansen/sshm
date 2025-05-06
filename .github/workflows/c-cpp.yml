@@ -29,7 +29,6 @@ jobs:
     - name: Build SSHM Debian Package
       run: |
         dpkg-buildpackage -us -uc -b
-        echo "::set-output name=deb_path::../sshm_*.deb"
       id: build
 
     - name: Upload SSHM Debian Package
