@@ -30,6 +30,11 @@ jobs:
       - name: make distcheck
         run: make distcheck
 
+      - name: Prepare build directory
+        run: |
+          sudo mkdir -p /build
+          sudo chown runner:runner /build
+
       - name: Build SSHM Debian Package
         id: build
         run: |
