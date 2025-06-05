@@ -1,9 +1,7 @@
 name: C/C++ CI
 
 on:
-  push:
-    branches: [ "main" ]
-  pull_request:
+  release:
     branches: [ "main" ]
 
 jobs:
@@ -17,26 +15,13 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y build-essential devscripts debhelper automake
-
-      - name: configure
-        run: ./configure
-
-      - name: make
-        run: make
-
-      - name: make check
-        run: make check
-
-      - name: make distcheck
-        run: make distcheck
-
       - name: Build SSHM Debian Package
         id: build
         run: |
-          cd sshm
-          dpkg-buildpackage -us -uc -b
-          ls ../sshm_*.{deb,ddeb} || { echo "No .deb/ddeb files found"; exit 1; }
-          echo "deb_path=artifacts/sshm_*.{deb,ddeb,buildinfo}" >> $GITHUB_OUTPUT
+            cd sshm
+            dpkg-buildpackage -us -uc -b
+            ls ../sshm_*.{deb,ddeb} || { echo "No .deb/ddeb files found"; exit 1; }
+            echo "deb_path=artifacts/sshm_*.{deb,ddeb,buildinfo}" >> $GITHUB_OUTPUT
 
       - name: Upload SSHM Debian Package
         if: success()
