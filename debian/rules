@@ -1,32 +1,19 @@
 #!/usr/bin/make -f
 
-# See debhelper(7) (uncomment to enable).
-# Output every command that modifies files on the build system.
-#export DH_VERBOSE = 1
-
-
-# See FEATURE AREAS in dpkg-buildflags(1).
-#export DEB_BUILD_MAINT_OPTIONS = hardening=+all
-
-# See ENVIRONMENT in dpkg-buildflags(1).
-# Package maintainers to append CFLAGS.
-#export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
-# Package maintainers to append LDFLAGS.
-#export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
-
+export DEB_BUILD_OPTIONS=nodes
+export DEB_CFLAGS_MAINT_APPEND = -Wall -pedantic
+export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 
 %:
-	dh $@
+	dh $@ --no-automatic-dbgsym
 
+override_dh_strip:
+	dh_strip --no-automatic-dbgsym
 
-# dh_make generated override targets.
-# This is an example for Cmake (see <https://bugs.debian.org/641051>).
-#override_dh_auto_configure:
-#	dh_auto_configure -- \
-#	-DCMAKE_LIBRARY_PATH=$(DEB_HOST_MULTIARCH)
+override_dh_builddeb:
+	dh_builddeb --destdir=artifacts
+    # Move .buildinfo and .changes files to artifacts if they exist
+	-mv ../*.buildinfo ../*.changes artifacts/ 2>/dev/null || true
 
-binary: binary-arch binary-indep
-# Move files to desired directory
-	mv ../*.deb $(DESTDIR)/build
-#	mv ../*.changes $(DESTDIR)/build
-#	mv ../*.buildinfo $(DESTDIR)/build
+override_dh_genbuildinfo:
+	dh_genbuildinfo --destdir=artifacts --no-merge --no-check
