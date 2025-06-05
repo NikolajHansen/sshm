@@ -40,3 +40,13 @@ jobs:
           asset_path: artifacts/sshm_*.deb
           asset_name: sshm_${{ github.ref_name }}.deb
           asset_content_type: application/vnd.debian.binary-package
+
+      - name: Create release branch from tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG_NAME="${GITHUB_REF#refs/tags/}"
+          BRANCH_NAME="release/$TAG_NAME"
+          git fetch --all --tags
+          git checkout -b "$BRANCH_NAME" "$TAG_NAME"
+          git push origin "$BRANCH_NAME"
