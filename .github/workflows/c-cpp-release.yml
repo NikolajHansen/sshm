@@ -25,9 +25,18 @@ jobs:
           ls artifacts/
           echo "deb_path=artifacts/*" >> $GITHUB_OUTPUT
 
-      - name: Upload SSHM Debian Package
+      - name: Upload SSHM artifacts
         if: success()
         uses: actions/upload-artifact@v4
         with:
           name: sshm-debian-packages
           path: ${{ steps.build.outputs.deb_path }}
+
+      - name: Upload SSHM Debian Package to Release
+        if: success()
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: artifacts/sshm_*.deb
+          asset_name: sshm_${{ github.ref_name }}.deb
+          asset_content_type: application/vnd.debian.binary-package
