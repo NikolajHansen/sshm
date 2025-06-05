@@ -41,6 +41,18 @@ jobs:
           asset_name: sshm_${{ github.ref_name }}.deb
           asset_content_type: application/vnd.debian.binary-package
 
+      - name: Install GitHub CLI
+        run: sudo apt-get install -y gh
+
+      - name: Upload SSHM Debian Packages to Release
+        if: success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for file in artifacts/*.deb; do
+            gh release upload "${{ github.ref_name }}" "$file" --clobber
+          done
+
       - name: Create release branch from tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
