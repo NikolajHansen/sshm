@@ -33,10 +33,9 @@ jobs:
       - name: Build SSHM Debian Package
         id: build
         run: |
+          cd sshm
           dpkg-buildpackage -us -uc -b
-          ls ../sshm_*.{deb,ddeb} || { echo "No .deb/.ddeb files found"; exit 1; }
-          mkdir -p artifacts
-          mv ../sshm_*.{deb,ddeb,buildinfo} artifacts/
+          ls ../sshm_*.{deb,ddeb} || { echo "No .deb/ddeb files found"; exit 1; }
           echo "deb_path=artifacts/sshm_*.{deb,ddeb,buildinfo}" >> $GITHUB_OUTPUT
 
       - name: Upload SSHM Debian Package
