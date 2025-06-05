@@ -12,8 +12,5 @@ override_dh_strip:
 
 override_dh_builddeb:
 	dh_builddeb --destdir=artifacts
-    # Move .buildinfo and .changes files to artifacts if they exist
+	# Move .buildinfo and .changes files to artifacts if they exist
 	-mv ../*.buildinfo ../*.changes artifacts/ 2>/dev/null || true
-
-override_dh_genbuildinfo:
-	dh_genbuildinfo --destdir=artifacts --no-merge --no-check
